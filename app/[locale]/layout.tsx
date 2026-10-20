@@ -17,7 +17,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "https://anatomy-atelier.openai.site");
+    : "https://anatomy-lessons.osumo-michael.workers.dev");
 
 export async function generateMetadata({
   params,
