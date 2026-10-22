@@ -344,10 +344,9 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 
 .hotspot-index { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-.auto-rotate {
+.auto-rotate, .voice-guide {
   position: absolute;
   inset-inline-end: 17px;
-  bottom: 16px;
   z-index: 4;
   display: flex;
   align-items: center;
@@ -360,6 +359,9 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   cursor: pointer;
   font: 500 10px var(--font-serif), serif;
 }
+.auto-rotate { bottom: 16px; }
+.voice-guide { bottom: 58px; }
+.voice-guide:disabled { opacity: .48; cursor: not-allowed; }
 .switch { width: 29px; height: 17px; padding: 2px; border-radius: 99px; background: #c8c2bb; }
 .switch i { display: block; width: 13px; height: 13px; border-radius: 50%; background: white; box-shadow: 0 1px 4px rgba(0,0,0,.17); }
 .switch.on { background: #70a9cb; }
@@ -571,6 +573,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   .tool-button:nth-last-child(1) { border: 0; border-radius: 12px; }
   .tool-button span { display: none; }
   .auto-rotate { bottom: 82px; right: 10px; }
+  .voice-guide { bottom: 124px; right: 10px; }
   .view-caption { left: 12px; bottom: 84px; }
   .tip-note { width: 130px; min-height: 113px; padding: 11px; }
   .tip-note p { font-size: 12px; }

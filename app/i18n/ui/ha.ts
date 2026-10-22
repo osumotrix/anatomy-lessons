@@ -28,6 +28,7 @@ export const ui: UiDictionary = {
     tip: "Shawara", tipDrag: "Ja don juya", tipScroll: "Gungura don kusantowa", tipClick: "Danna ɗigo don ƙarin bayani",
     loading: "Ana shirya {organ}", autoRotate: "Juya da kansa",
     caption: "Samfurin 3D · danna ɗigo don bincikawa", structures: "Sassan da ke cikin wannan samfurin",
+    voiceGuide: "Jagorar murya", voiceEnable: "Kunna jagorar murya", voiceDisable: "Kashe jagorar murya", voiceUnavailable: "Babu murya a wannan burauzar",
   },
   info: {
     kicker: "{organ}", keyFacts: "Muhimman bayanai", size: "Girma", weight: "Nauyi", daily: "Kowace rana",

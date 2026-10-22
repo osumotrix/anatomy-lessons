@@ -8,6 +8,8 @@ import { HotspotLayer } from "./hotspots";
 type ViewerCallbacks = {
   onLoading: (loading: boolean, progress: number) => void;
   onSelect: (hotspot: Hotspot | null) => void;
+  /** Reports pointer focus on a labelled structure without selecting it. */
+  onHover?: (hotspot: Hotspot | null) => void;
   /** Quiz mode: every dot press is reported, with no selection toggling. */
   onPick?: (hotspot: Hotspot) => void;
   /** Authoring mode: a point on the mesh surface, in pivot space. */
@@ -247,6 +249,10 @@ export class AnatomyViewer {
   async setOrgan(modelUrl: string, hotspots: Hotspot[], accent: string) {
     const request = ++this.loadRequest;
     this.select(null);
+    if (this.hoveredId) {
+      this.hoveredId = null;
+      this.callbacks.onHover?.(null);
+    }
     this.callbacks.onLoading(true, 0);
 
     const outgoing = this.organ;
@@ -533,6 +539,7 @@ export class AnatomyViewer {
     this.hoverProbe = null;
     if (this.hoveredId) {
       this.hoveredId = null;
+      this.callbacks.onHover?.(null);
       this.dirty = true;
     }
   };
@@ -545,6 +552,7 @@ export class AnatomyViewer {
     const id = marker?.hotspot.id ?? null;
     if (id === this.hoveredId) return;
     this.hoveredId = id;
+    this.callbacks.onHover?.(marker?.hotspot ?? null);
     this.renderer.domElement.style.cursor = id ? "pointer" : "";
     this.dirty = true;
   }

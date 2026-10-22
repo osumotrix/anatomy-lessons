@@ -28,6 +28,7 @@ export const ui: UiDictionary = {
     tip: "Ìmọ̀ràn", tipDrag: "Fà á láti yí i", tipScroll: "Yi kẹ̀kẹ́ láti sun mọ́", tipClick: "Tẹ àmì kan láti mọ̀ sí i",
     loading: "A ń pèsè {organ}", autoRotate: "Yípo fúnra rẹ̀",
     caption: "Àwòrán 3D · tẹ àmì kan láti ṣàwárí", structures: "Àwọn apá inú àwòrán yìí",
+    voiceGuide: "Atọ́nisọ́nà ohùn", voiceEnable: "Tan atọ́nisọ́nà ohùn", voiceDisable: "Pa atọ́nisọ́nà ohùn", voiceUnavailable: "Ohùn kò sí nínú aṣàwákiri yìí",
   },
   info: {
     kicker: "{organ}", keyFacts: "Àwọn òtítọ́ pàtàkì", size: "Ìwọ̀n", weight: "Ìwúwo", daily: "Lójoojúmọ́",

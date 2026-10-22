@@ -30,6 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "点をクリックして詳しく",
     loading: "{organ}を準備中", autoRotate: "自動回転",
     caption: "3D 標本 · 点をクリック", structures: "この標本の構造",
+    voiceGuide: "音声ガイド", voiceEnable: "音声ガイドをオン", voiceDisable: "音声ガイドをオフ", voiceUnavailable: "このブラウザーでは音声を利用できません",
   },
   info: {
     kicker: "{organ}", keyFacts: "基本データ", size: "大きさ", weight: "重さ", daily: "1日あたり",

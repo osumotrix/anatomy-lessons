@@ -28,6 +28,7 @@ export const ui: UiDictionary = {
     tip: "Ndụmọdụ", tipDrag: "Dọrọ ka ị tụgharịa", tipScroll: "Pịgharịa ka ị bịa nso", tipClick: "Pịa ntụpọ ka ị mụtakwuo",
     loading: "Na-akwadebe {organ}", autoRotate: "Tụgharịa n'onwe ya",
     caption: "Ihe nlereanya 3D · pịa ntụpọ ka ị nyochaa", structures: "Akụkụ dị n'ihe nlereanya a",
+    voiceGuide: "Onye ndu olu", voiceEnable: "Gbanye onye ndu olu", voiceDisable: "Gbanyụọ onye ndu olu", voiceUnavailable: "Olu adịghị na ihe nchọgharị a",
   },
   info: {
     kicker: "{organ}", keyFacts: "Eziokwu ndị bụ isi", size: "Nha", weight: "Ibu", daily: "Kwa ụbọchị",

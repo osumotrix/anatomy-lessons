@@ -30,6 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "Haz clic en un punto para saber más",
     loading: "Preparando {organ}", autoRotate: "Giro automático",
     caption: "Espécimen 3D · haz clic en un punto", structures: "Estructuras de este espécimen",
+    voiceGuide: "Guía de voz", voiceEnable: "Activar guía de voz", voiceDisable: "Desactivar guía de voz", voiceUnavailable: "La voz no está disponible en este navegador",
   },
   info: {
     kicker: "{organ}", keyFacts: "Datos clave", size: "Tamaño", weight: "Peso", daily: "A diario",

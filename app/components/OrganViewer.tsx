@@ -12,6 +12,8 @@ import {
   Check,
   Crosshair,
   Sparkles,
+  Volume2,
+  VolumeX,
   X,
 } from "lucide-react";
 import type { Hotspot, Organ } from "../i18n/merge";
@@ -21,6 +23,7 @@ import type { AnatomyViewer } from "../lib/three/viewer";
 type Props = {
   organ: Organ;
   t: UiDictionary;
+  languageTag: string;
   autoRotate: boolean;
   onAutoRotate: (enabled: boolean) => void;
   compare: boolean;
@@ -162,7 +165,7 @@ function useAuthoringFlag() {
   );
 }
 
-export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCompare, quizActive, onQuizExit }: Props) {
+export function OrganViewer({ organ, t, languageTag, autoRotate, onAutoRotate, compare, onCompare, quizActive, onQuizExit }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<AnatomyViewer | null>(null);
   const organRef = useRef(organ);
@@ -173,6 +176,11 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
   const [progress, setProgress] = useState(0);
   const [slowLoad, setSlowLoad] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
+  const [voiceEnabled, setVoiceEnabled] = useState(false);
+  const [voiceAvailable, setVoiceAvailable] = useState(true);
+  const hoverSpeechTimer = useRef<number | null>(null);
+  const lastSpoken = useRef<string | null>(null);
+  const speechRef = useRef<(hotspot: Hotspot | null, immediate?: boolean) => void>(() => {});
 
   // Opt-in coordinate probe for placing hotspots — not a user-facing feature.
   const authoring = useAuthoringFlag();
@@ -189,6 +197,67 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
   useEffect(() => {
     authoringRef.current = authoring;
   }, [authoring]);
+
+  useEffect(() => {
+    setVoiceAvailable("speechSynthesis" in window && "SpeechSynthesisUtterance" in window);
+    return () => {
+      if (hoverSpeechTimer.current !== null) window.clearTimeout(hoverSpeechTimer.current);
+      window.speechSynthesis?.cancel();
+    };
+  }, []);
+
+  // The 3D viewer lives for the page lifetime, so its callbacks use this ref to
+  // pick up the current language, quiz state, and voice preference.
+  useEffect(() => {
+    speechRef.current = (hotspot, immediate = false) => {
+      if (hoverSpeechTimer.current !== null) {
+        window.clearTimeout(hoverSpeechTimer.current);
+        hoverSpeechTimer.current = null;
+      }
+      if (!hotspot) {
+        lastSpoken.current = null;
+        return;
+      }
+      if (!voiceEnabled || quizActive || !("speechSynthesis" in window)) return;
+      if (lastSpoken.current === hotspot.id) return;
+
+      const speak = () => {
+        lastSpoken.current = hotspot.id;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(`${hotspot.label}. ${hotspot.detail}`);
+        utterance.lang = languageTag;
+        utterance.rate = 0.92;
+        const primaryLanguage = languageTag.split("-")[0].toLowerCase();
+        const voices = window.speechSynthesis.getVoices();
+        utterance.voice = voices.find((voice) => voice.lang.toLowerCase() === languageTag.toLowerCase())
+          ?? voices.find((voice) => voice.lang.toLowerCase().startsWith(`${primaryLanguage}-`))
+          ?? null;
+        window.speechSynthesis.speak(utterance);
+      };
+
+      if (immediate) speak();
+      else hoverSpeechTimer.current = window.setTimeout(speak, 420);
+    };
+  }, [languageTag, quizActive, voiceEnabled]);
+
+  useEffect(() => {
+    if (voiceEnabled && !quizActive) return;
+    if (hoverSpeechTimer.current !== null) {
+      window.clearTimeout(hoverSpeechTimer.current);
+      hoverSpeechTimer.current = null;
+    }
+    lastSpoken.current = null;
+    window.speechSynthesis?.cancel();
+  }, [quizActive, voiceEnabled]);
+
+  useEffect(() => {
+    if (hoverSpeechTimer.current !== null) {
+      window.clearTimeout(hoverSpeechTimer.current);
+      hoverSpeechTimer.current = null;
+    }
+    lastSpoken.current = null;
+    window.speechSynthesis?.cancel();
+  }, [organ.id, languageTag, quizActive]);
 
   // A typical organ is ready well inside a second — flashing a loading panel for
   // that reads as jank. It only appears if the fetch is genuinely slow; the flag
@@ -219,7 +288,11 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
     void import("../lib/three/viewer").then(({ AnatomyViewer: Viewer }) => {
       if (cancelled || !mountRef.current) return;
       viewer = new Viewer(mountRef.current, {
-        onSelect: setSelected,
+        onSelect: (hotspot) => {
+          setSelected(hotspot);
+          if (hotspot) speechRef.current(hotspot, true);
+        },
+        onHover: (hotspot) => speechRef.current(hotspot),
         onLoading: (isLoading, value) => {
           setLoading(isLoading);
           setProgress(value);
@@ -379,6 +452,28 @@ export function OrganViewer({ organ, t, autoRotate, onAutoRotate, compare, onCom
           <strong>{format(t.viewer.loading, { organ: organ.name })}</strong>
           <span>{Math.max(8, Math.round(progress * 100))}%</span>
         </div>
+      )}
+
+      {!quizActive && (
+      <button
+        className="voice-guide"
+        type="button"
+        onClick={() => {
+          if (!voiceAvailable) return;
+          setVoiceEnabled((enabled) => {
+            if (enabled) window.speechSynthesis.cancel();
+            lastSpoken.current = null;
+            return !enabled;
+          });
+        }}
+        disabled={!voiceAvailable}
+        aria-pressed={voiceEnabled}
+        title={!voiceAvailable ? t.viewer.voiceUnavailable : voiceEnabled ? t.viewer.voiceDisable : t.viewer.voiceEnable}
+      >
+        {voiceEnabled ? <Volume2 size={14} /> : <VolumeX size={14} />}
+        {t.viewer.voiceGuide}
+        <span className={`switch ${voiceEnabled ? "on" : ""}`}><i /></span>
+      </button>
       )}
 
       {!quizActive && (

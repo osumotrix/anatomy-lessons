@@ -30,6 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "Нажмите на точку, чтобы узнать больше",
     loading: "Готовим: {organ}", autoRotate: "Автовращение",
     caption: "3D-препарат · нажмите на точку", structures: "Структуры этого препарата",
+    voiceGuide: "Голосовой гид", voiceEnable: "Включить голосовой гид", voiceDisable: "Выключить голосовой гид", voiceUnavailable: "Озвучивание недоступно в этом браузере",
   },
   info: {
     kicker: "{organ}", keyFacts: "Ключевые факты", size: "Размер", weight: "Масса", daily: "За сутки",

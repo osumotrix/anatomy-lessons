@@ -229,6 +229,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
         <OrganViewer
           organ={organ}
           t={t}
+          languageTag={locale.intl.replace("_", "-")}
           autoRotate={autoRotate}
           onAutoRotate={setAutoRotate}
           compare={compare}

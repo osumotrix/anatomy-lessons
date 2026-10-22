@@ -30,6 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "Klik titik untuk tahu lebih lanjut",
     loading: "Menyiapkan {organ}", autoRotate: "Putar otomatis",
     caption: "Spesimen 3D · klik sebuah titik", structures: "Struktur pada spesimen ini",
+    voiceGuide: "Panduan suara", voiceEnable: "Aktifkan panduan suara", voiceDisable: "Matikan panduan suara", voiceUnavailable: "Suara tidak tersedia di peramban ini",
   },
   info: {
     kicker: "{organ}", keyFacts: "Fakta utama", size: "Ukuran", weight: "Berat", daily: "Setiap hari",

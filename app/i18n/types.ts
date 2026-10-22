@@ -39,6 +39,7 @@ export type UiDictionary = {
   viewer: {
     title: string; canvas: string; tip: string; tipDrag: string; tipScroll: string; tipClick: string;
     loading: string; autoRotate: string; caption: string; structures: string;
+    voiceGuide: string; voiceEnable: string; voiceDisable: string; voiceUnavailable: string;
   };
   info: {
     kicker: string; keyFacts: string; size: string; weight: string; daily: string;
