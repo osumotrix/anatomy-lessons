@@ -5,6 +5,8 @@ import { defaultLocale } from "./config";
  *  analysable by both build pipelines (next build and vinext/Vite). */
 const uiLoaders: Record<string, () => Promise<UiDictionary>> = {
   ig: () => import("./ui/ig").then((m) => m.ui),
+  ha: () => import("./ui/ha").then((m) => m.ui),
+  yo: () => import("./ui/yo").then((m) => m.ui),
   en: () => import("./ui/en").then((m) => m.ui),
   es: () => import("./ui/es").then((m) => m.ui),
   hi: () => import("./ui/hi").then((m) => m.ui),
@@ -21,6 +23,8 @@ const uiLoaders: Record<string, () => Promise<UiDictionary>> = {
 
 const organLoaders: Record<string, () => Promise<OrganContentDictionary>> = {
   ig: () => import("./organs/ig").then((m) => m.organs),
+  ha: () => import("./organs/ha").then((m) => m.organs),
+  yo: () => import("./organs/yo").then((m) => m.organs),
   en: () => import("./organs/en").then((m) => m.organs),
   es: () => import("./organs/es").then((m) => m.organs),
   hi: () => import("./organs/hi").then((m) => m.organs),

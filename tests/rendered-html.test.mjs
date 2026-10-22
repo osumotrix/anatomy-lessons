@@ -55,3 +55,25 @@ test("renders Igbo as a fully localized route", async () => {
   assert.match(html, /Ọba akụkụ ahụ/);
   assert.match(html, /Obi/);
 });
+
+test("renders Hausa as a fully localized route", async () => {
+  const response = await render("/ha");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /<html lang="ha"/);
+  assert.match(html, /Koyi tsarin jikin ɗan Adam/);
+  assert.match(html, /Ɗakin karatun gabobi/);
+  assert.match(html, /Zuciya/);
+});
+
+test("renders Yoruba as a fully localized route", async () => {
+  const response = await render("/yo");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /<html lang="yo"/);
+  assert.match(html, /Kọ́ ẹ̀kọ́ nípa ara ènìyàn/);
+  assert.match(html, /Ilé ìkàwé ẹ̀yà ara/);
+  assert.match(html, /Ọkàn/);
+});

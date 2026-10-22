@@ -16,6 +16,8 @@ export type LocaleConfig = {
 
 export const locales: LocaleConfig[] = [
   { code: "ig", nativeName: "Igbo",     englishName: "Igbo",       country: "Nigeria",       dir: "ltr", script: "latin",      intl: "ig_NG" },
+  { code: "ha", nativeName: "Hausa",    englishName: "Hausa",      country: "Nigeria",       dir: "ltr", script: "latin",      intl: "ha_NG" },
+  { code: "yo", nativeName: "Yorùbá",   englishName: "Yoruba",     country: "Nigeria",       dir: "ltr", script: "latin",      intl: "yo_NG" },
   { code: "en", nativeName: "English",  englishName: "English",    country: "United States", dir: "ltr", script: "latin",      intl: "en_US" },
   { code: "es", nativeName: "Español",  englishName: "Spanish",    country: "Spain",         dir: "ltr", script: "latin",      intl: "es_ES" },
   { code: "hi", nativeName: "हिन्दी",     englishName: "Hindi",      country: "India",         dir: "ltr", script: "devanagari", intl: "hi_IN" },
