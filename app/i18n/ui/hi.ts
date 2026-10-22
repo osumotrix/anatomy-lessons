@@ -30,7 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "अधिक जानने के लिए बिंदु पर क्लिक करें",
     loading: "{organ} तैयार हो रहा है", autoRotate: "स्वतः घूर्णन",
     caption: "3D नमूना · बिंदु पर क्लिक करें", structures: "इस नमूने की संरचनाएँ",
-    voiceGuide: "आवाज़ मार्गदर्शक", voiceEnable: "आवाज़ मार्गदर्शक चालू करें", voiceDisable: "आवाज़ मार्गदर्शक बंद करें", voiceUnavailable: "इस ब्राउज़र में आवाज़ उपलब्ध नहीं है",
+    voiceGuide: "मानवीय आवाज़", voiceEnable: "मानवीय वर्णन चालू करें", voiceDisable: "मानवीय वर्णन बंद करें", voiceUnavailable: "मानवीय रिकॉर्डिंग अभी उपलब्ध नहीं है",
   },
   info: {
     kicker: "{organ}", keyFacts: "मुख्य तथ्य", size: "आकार", weight: "भार", daily: "प्रतिदिन",

@@ -23,7 +23,7 @@ import type { AnatomyViewer } from "../lib/three/viewer";
 type Props = {
   organ: Organ;
   t: UiDictionary;
-  languageTag: string;
+  localeCode: string;
   autoRotate: boolean;
   onAutoRotate: (enabled: boolean) => void;
   compare: boolean;
@@ -165,7 +165,11 @@ function useAuthoringFlag() {
   );
 }
 
-export function OrganViewer({ organ, t, languageTag, autoRotate, onAutoRotate, compare, onCompare, quizActive, onQuizExit }: Props) {
+function narrationKey(locale: string, organId: string, hotspotId: string) {
+  return `${locale}/${organId}/${hotspotId}`;
+}
+
+export function OrganViewer({ organ, t, localeCode, autoRotate, onAutoRotate, compare, onCompare, quizActive, onQuizExit }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<AnatomyViewer | null>(null);
   const organRef = useRef(organ);
@@ -177,10 +181,15 @@ export function OrganViewer({ organ, t, languageTag, autoRotate, onAutoRotate, c
   const [slowLoad, setSlowLoad] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [voiceEnabled, setVoiceEnabled] = useState(false);
-  const [voiceAvailable, setVoiceAvailable] = useState(true);
+  const [availableNarration, setAvailableNarration] = useState<Set<string>>(() => new Set());
   const hoverSpeechTimer = useRef<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastSpoken = useRef<string | null>(null);
   const speechRef = useRef<(hotspot: Hotspot | null, immediate?: boolean) => void>(() => {});
+  const voiceAvailable = useMemo(
+    () => organ.hotspots.every((hotspot) => availableNarration.has(narrationKey(localeCode, organ.id, hotspot.id))),
+    [availableNarration, localeCode, organ.hotspots, organ.id],
+  );
 
   // Opt-in coordinate probe for placing hotspots — not a user-facing feature.
   const authoring = useAuthoringFlag();
@@ -199,15 +208,24 @@ export function OrganViewer({ organ, t, languageTag, autoRotate, onAutoRotate, c
   }, [authoring]);
 
   useEffect(() => {
-    setVoiceAvailable("speechSynthesis" in window && "SpeechSynthesisUtterance" in window);
+    let cancelled = false;
+    void fetch("/audio/narration/manifest.json", { cache: "no-store" })
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error("Narration manifest unavailable")))
+      .then((manifest: { clips?: string[] }) => {
+        if (!cancelled) setAvailableNarration(new Set(manifest.clips ?? []));
+      })
+      .catch(() => {
+        if (!cancelled) setAvailableNarration(new Set());
+      });
     return () => {
+      cancelled = true;
       if (hoverSpeechTimer.current !== null) window.clearTimeout(hoverSpeechTimer.current);
-      window.speechSynthesis?.cancel();
+      audioRef.current?.pause();
     };
   }, []);
 
   // The 3D viewer lives for the page lifetime, so its callbacks use this ref to
-  // pick up the current language, quiz state, and voice preference.
+  // pick up the current recording manifest, quiz state, and voice preference.
   useEffect(() => {
     speechRef.current = (hotspot, immediate = false) => {
       if (hoverSpeechTimer.current !== null) {
@@ -218,37 +236,34 @@ export function OrganViewer({ organ, t, languageTag, autoRotate, onAutoRotate, c
         lastSpoken.current = null;
         return;
       }
-      if (!voiceEnabled || quizActive || !("speechSynthesis" in window)) return;
+      const key = narrationKey(localeCode, organ.id, hotspot.id);
+      if (!voiceEnabled || quizActive || !availableNarration.has(key)) return;
       if (lastSpoken.current === hotspot.id) return;
 
-      const speak = () => {
+      const play = () => {
         lastSpoken.current = hotspot.id;
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(`${hotspot.label}. ${hotspot.detail}`);
-        utterance.lang = languageTag;
-        utterance.rate = 0.92;
-        const primaryLanguage = languageTag.split("-")[0].toLowerCase();
-        const voices = window.speechSynthesis.getVoices();
-        utterance.voice = voices.find((voice) => voice.lang.toLowerCase() === languageTag.toLowerCase())
-          ?? voices.find((voice) => voice.lang.toLowerCase().startsWith(`${primaryLanguage}-`))
-          ?? null;
-        window.speechSynthesis.speak(utterance);
+        audioRef.current?.pause();
+        const audio = new Audio(`/audio/narration/${key}.mp3`);
+        audio.preload = "auto";
+        audioRef.current = audio;
+        void audio.play().catch(() => {});
       };
 
-      if (immediate) speak();
-      else hoverSpeechTimer.current = window.setTimeout(speak, 420);
+      if (immediate) play();
+      else hoverSpeechTimer.current = window.setTimeout(play, 420);
     };
-  }, [languageTag, quizActive, voiceEnabled]);
+  }, [availableNarration, localeCode, organ.id, quizActive, voiceEnabled]);
 
   useEffect(() => {
-    if (voiceEnabled && !quizActive) return;
+    if (voiceEnabled && !quizActive && voiceAvailable) return;
     if (hoverSpeechTimer.current !== null) {
       window.clearTimeout(hoverSpeechTimer.current);
       hoverSpeechTimer.current = null;
     }
     lastSpoken.current = null;
-    window.speechSynthesis?.cancel();
-  }, [quizActive, voiceEnabled]);
+    audioRef.current?.pause();
+    if (!voiceAvailable) setVoiceEnabled(false);
+  }, [quizActive, voiceAvailable, voiceEnabled]);
 
   useEffect(() => {
     if (hoverSpeechTimer.current !== null) {
@@ -256,8 +271,8 @@ export function OrganViewer({ organ, t, languageTag, autoRotate, onAutoRotate, c
       hoverSpeechTimer.current = null;
     }
     lastSpoken.current = null;
-    window.speechSynthesis?.cancel();
-  }, [organ.id, languageTag, quizActive]);
+    audioRef.current?.pause();
+  }, [localeCode, organ.id, quizActive]);
 
   // A typical organ is ready well inside a second — flashing a loading panel for
   // that reads as jank. It only appears if the fetch is genuinely slow; the flag
@@ -461,7 +476,7 @@ export function OrganViewer({ organ, t, languageTag, autoRotate, onAutoRotate, c
         onClick={() => {
           if (!voiceAvailable) return;
           setVoiceEnabled((enabled) => {
-            if (enabled) window.speechSynthesis.cancel();
+            if (enabled) audioRef.current?.pause();
             lastSpoken.current = null;
             return !enabled;
           });

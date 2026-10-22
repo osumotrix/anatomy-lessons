@@ -30,7 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "Auf einen Punkt klicken für mehr",
     loading: "{organ} wird vorbereitet", autoRotate: "Automatisch drehen",
     caption: "3D-Präparat · Punkt anklicken", structures: "Strukturen dieses Präparats",
-    voiceGuide: "Sprachführung", voiceEnable: "Sprachführung einschalten", voiceDisable: "Sprachführung ausschalten", voiceUnavailable: "Sprachausgabe ist in diesem Browser nicht verfügbar",
+    voiceGuide: "Menschliche Stimme", voiceEnable: "Menschliche Erzählstimme einschalten", voiceDisable: "Menschliche Erzählstimme ausschalten", voiceUnavailable: "Menschliche Aufnahmen sind noch nicht verfügbar",
   },
   info: {
     kicker: "{organ}", keyFacts: "Eckdaten", size: "Größe", weight: "Gewicht", daily: "Täglich",

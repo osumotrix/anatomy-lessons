@@ -33,7 +33,7 @@ test("server-renders the English anatomy explorer", async () => {
   assert.match(html, /Heart/);
   assert.match(html, /Organ library/);
   assert.match(html, /Heart interactive viewer/);
-  assert.match(html, /Voice guide/);
+  assert.match(html, /Human voice/);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/);
 });
 
@@ -55,7 +55,7 @@ test("renders Igbo as a fully localized route", async () => {
   assert.match(html, /Mụta gbasara ahụ mmadụ/);
   assert.match(html, /Ọba akụkụ ahụ/);
   assert.match(html, /Obi/);
-  assert.match(html, /Onye ndu olu/);
+  assert.match(html, /Olu mmadụ/);
 });
 
 test("renders Hausa as a fully localized route", async () => {
@@ -67,7 +67,7 @@ test("renders Hausa as a fully localized route", async () => {
   assert.match(html, /Koyi tsarin jikin ɗan Adam/);
   assert.match(html, /Ɗakin karatun gabobi/);
   assert.match(html, /Zuciya/);
-  assert.match(html, /Jagorar murya/);
+  assert.match(html, /Muryar mutum/);
 });
 
 test("renders Yoruba as a fully localized route", async () => {
@@ -79,5 +79,5 @@ test("renders Yoruba as a fully localized route", async () => {
   assert.match(html, /Kọ́ ẹ̀kọ́ nípa ara ènìyàn/);
   assert.match(html, /Ilé ìkàwé ẹ̀yà ara/);
   assert.match(html, /Ọkàn/);
-  assert.match(html, /Atọ́nisọ́nà ohùn/);
+  assert.match(html, /Ohùn ènìyàn/);
 });

@@ -30,7 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "点击圆点了解更多",
     loading: "正在准备{organ}", autoRotate: "自动旋转",
     caption: "3D 标本 · 点击圆点探索", structures: "本标本中的结构",
-    voiceGuide: "语音导览", voiceEnable: "开启语音导览", voiceDisable: "关闭语音导览", voiceUnavailable: "此浏览器不支持语音",
+    voiceGuide: "真人语音", voiceEnable: "开启真人讲解", voiceDisable: "关闭真人讲解", voiceUnavailable: "真人录音尚未提供",
   },
   info: {
     kicker: "{organ}", keyFacts: "关键数据", size: "大小", weight: "重量", daily: "每日",

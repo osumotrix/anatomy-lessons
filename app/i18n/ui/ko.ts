@@ -30,7 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "점을 클릭해 자세히 보기",
     loading: "{organ} 준비 중", autoRotate: "자동 회전",
     caption: "3D 표본 · 점을 클릭하세요", structures: "이 표본의 구조",
-    voiceGuide: "음성 안내", voiceEnable: "음성 안내 켜기", voiceDisable: "음성 안내 끄기", voiceUnavailable: "이 브라우저에서는 음성을 사용할 수 없습니다",
+    voiceGuide: "실제 사람 음성", voiceEnable: "사람의 해설 켜기", voiceDisable: "사람의 해설 끄기", voiceUnavailable: "사람이 녹음한 해설은 아직 없습니다",
   },
   info: {
     kicker: "{organ}", keyFacts: "핵심 정보", size: "크기", weight: "무게", daily: "하루",

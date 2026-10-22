@@ -30,7 +30,7 @@ export const ui: UiDictionary = {
     tipClick: "انقر على نقطة لمعرفة المزيد",
     loading: "جارٍ تحضير {organ}", autoRotate: "تدوير تلقائي",
     caption: "عيّنة ثلاثية الأبعاد · انقر على نقطة", structures: "بنى هذه العيّنة",
-    voiceGuide: "الدليل الصوتي", voiceEnable: "تشغيل الدليل الصوتي", voiceDisable: "إيقاف الدليل الصوتي", voiceUnavailable: "الصوت غير متاح في هذا المتصفح",
+    voiceGuide: "صوت بشري", voiceEnable: "تشغيل السرد البشري", voiceDisable: "إيقاف السرد البشري", voiceUnavailable: "التسجيلات البشرية غير متاحة بعد",
   },
   info: {
     kicker: "{organ}", keyFacts: "حقائق أساسية", size: "الحجم", weight: "الوزن", daily: "يوميًا",

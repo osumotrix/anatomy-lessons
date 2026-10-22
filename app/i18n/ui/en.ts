@@ -29,7 +29,7 @@ export const ui: UiDictionary = {
     tip: "Tip", tipDrag: "Drag to rotate", tipScroll: "Scroll to zoom", tipClick: "Click a dot to learn more",
     loading: "Preparing the {organ}", autoRotate: "Auto rotate",
     caption: "3D specimen · click a dot to explore", structures: "Structures in this specimen",
-    voiceGuide: "Voice guide", voiceEnable: "Turn on voice guide", voiceDisable: "Turn off voice guide", voiceUnavailable: "Voice is not available in this browser",
+    voiceGuide: "Human voice", voiceEnable: "Turn on human narration", voiceDisable: "Turn off human narration", voiceUnavailable: "Human recordings have not been added yet",
   },
   info: {
     kicker: "The {organ}", keyFacts: "Key facts", size: "Size", weight: "Weight", daily: "Daily",
