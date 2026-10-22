@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Lessons — Aprende anatomía como un artista",
+    title: "BodyQuest — Aprende anatomía como un artista",
     description:
       "Explora órganos en 3D con detalle médico — corazón, cerebro, pulmones, hígado, riñones, ojo, intestino, páncreas y piel — en un taller de anatomía interactivo.",
-    ogTitle: "Anatomy Lessons — Aprende anatomía como un artista",
+    ogTitle: "BodyQuest — Aprende anatomía como un artista",
     ogDescription: "Aprende anatomía como un artista con especímenes 3D inmersivos y médicamente detallados.",
-    imageAlt: "Un corazón anatómico flotando sobre un pedestal, junto al logotipo de Anatomy Lessons",
+    imageAlt: "Un corazón anatómico flotando sobre un pedestal, junto al logotipo de BodyQuest",
   },
-  brand: { tagline: "Aprende anatomía como un artista", home: "Inicio de Anatomy Lessons" },
+  brand: { tagline: "Aprende anatomía como un artista", home: "Inicio de BodyQuest" },
   nav: { explore: "Explorar", systems: "Sistemas", lessons: "Lecciones", library: "Biblioteca", notes: "Notas" },
   search: { placeholder: "Buscar órganos, temas…" },
   profile: { open: "Abrir perfil del estudiante" },

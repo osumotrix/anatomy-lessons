@@ -28,13 +28,13 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const config = getLocale(locale);
   const { ui } = await getDictionary(locale);
-  const image = { url: "/og.jpg", width: 1200, height: 675, alt: ui.meta.imageAlt };
+  const image = { url: "/og-bodyquest.png", width: 1672, height: 941, alt: ui.meta.imageAlt };
 
   return {
     metadataBase: new URL(siteUrl),
     title: ui.meta.title,
     description: ui.meta.description,
-    applicationName: "Anatomy Lessons",
+    applicationName: "BodyQuest",
     alternates: {
       canonical: `/${locale}`,
       // Lets search engines serve the right language and offer the rest.
@@ -54,7 +54,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "website",
-      siteName: "Anatomy Lessons",
+      siteName: "BodyQuest",
       locale: config.intl,
       alternateLocale: locales.filter((entry) => entry.code !== locale).map((entry) => entry.intl),
       title: ui.meta.ogTitle,

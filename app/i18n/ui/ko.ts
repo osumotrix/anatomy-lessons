@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Lessons — 예술가처럼 배우는 해부학",
+    title: "BodyQuest — 예술가처럼 배우는 해부학",
     description:
       "심장, 뇌, 폐, 간, 콩팥, 눈, 장, 이자, 피부까지 — 의학적으로 정밀한 3D 장기를 인터랙티브 해부 아틀리에에서 살펴보세요.",
-    ogTitle: "Anatomy Lessons — 예술가처럼 배우는 해부학",
+    ogTitle: "BodyQuest — 예술가처럼 배우는 해부학",
     ogDescription: "몰입감 있고 의학적으로 정밀한 3D 표본으로 해부학을 배웁니다.",
-    imageAlt: "받침대 위에 떠 있는 해부학적 심장 표본과 Anatomy Lessons 로고",
+    imageAlt: "받침대 위에 떠 있는 해부학적 심장 표본과 BodyQuest 로고",
   },
-  brand: { tagline: "예술가처럼 배우는 해부학", home: "Anatomy Lessons 홈" },
+  brand: { tagline: "예술가처럼 배우는 해부학", home: "BodyQuest 홈" },
   nav: { explore: "탐색", systems: "계통", lessons: "수업", library: "라이브러리", notes: "노트" },
   search: { placeholder: "장기나 주제 검색…" },
   profile: { open: "학습자 프로필 열기" },

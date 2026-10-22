@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Lessons — Kọ́ ẹ̀kọ́ nípa ara ènìyàn bí ayàwòrán",
+    title: "BodyQuest — Kọ́ ẹ̀kọ́ nípa ara ènìyàn bí ayàwòrán",
     description:
       "Ṣàwárí àwọn ẹ̀yà ara 3D pẹ̀lú àlàyé ìṣègùn — ọkàn, ọpọlọ, ẹ̀dọ̀fóró, ẹ̀dọ̀, kíndìnrín, ojú, ìfun, pancreas àti awọ ara.",
-    ogTitle: "Anatomy Lessons — Kọ́ ẹ̀kọ́ nípa ara ènìyàn bí ayàwòrán",
+    ogTitle: "BodyQuest — Kọ́ ẹ̀kọ́ nípa ara ènìyàn bí ayàwòrán",
     ogDescription: "Kọ́ nípa ara ènìyàn nípasẹ̀ àwọn àwòrán 3D tó lẹ́wà tí ó sì ní àlàyé ìṣègùn kíkún.",
-    imageAlt: "Àwòrán ọkàn ènìyàn tó ń léfòó lórí pèpéle lẹ́gbẹ̀ẹ́ àmì Anatomy Lessons",
+    imageAlt: "Àwòrán ọkàn ènìyàn tó ń léfòó lórí pèpéle lẹ́gbẹ̀ẹ́ àmì BodyQuest",
   },
-  brand: { tagline: "Kọ́ ẹ̀kọ́ nípa ara ènìyàn bí ayàwòrán", home: "Ojúlé Anatomy Lessons" },
+  brand: { tagline: "Kọ́ ẹ̀kọ́ nípa ara ènìyàn bí ayàwòrán", home: "Ojúlé BodyQuest" },
   nav: { explore: "Ṣàwárí", systems: "Àwọn ètò ara", lessons: "Àwọn ẹ̀kọ́", library: "Ilé ìkàwé", notes: "Àkọsílẹ̀" },
   search: { placeholder: "Wá ẹ̀yà ara tàbí àkòrí…" },
   profile: { open: "Ṣí prófáìlì akẹ́kọ̀ọ́" },

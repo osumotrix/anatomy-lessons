@@ -28,8 +28,8 @@ test("server-renders the English anatomy explorer", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Anatomy Lessons/);
-  assert.match(html, /Anatomy Lessons/);
+  assert.match(html, /<title>BodyQuest/);
+  assert.match(html, /BodyQuest/);
   assert.match(html, /Heart/);
   assert.match(html, /Organ library/);
   assert.match(html, /Heart interactive viewer/);

@@ -173,7 +173,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
     <main className="app-shell">
       <header className="topbar">
         <button className="brand" type="button" onClick={() => selectOrgan("heart")} aria-label={t.brand.home}>
-          <strong>Anatomy Lessons<sup>✦</sup></strong>
+          <strong>BodyQuest<sup>✦</sup></strong>
           <em>{t.brand.tagline}</em>
         </button>
         <nav className="main-nav" aria-label="Primary navigation">

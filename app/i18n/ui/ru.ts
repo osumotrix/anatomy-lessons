@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Lessons — учить анатомию как художник",
+    title: "BodyQuest — учить анатомию как художник",
     description:
       "Исследуйте медицински достоверные 3D-органы — сердце, мозг, лёгкие, печень, почки, глаз, кишечник, поджелудочную железу и кожу — в интерактивной анатомической мастерской.",
-    ogTitle: "Anatomy Lessons — учить анатомию как художник",
+    ogTitle: "BodyQuest — учить анатомию как художник",
     ogDescription: "Изучайте анатомию как художник — на подробных трёхмерных препаратах.",
-    imageAlt: "Анатомический препарат сердца, парящий над подставкой, рядом с логотипом Anatomy Lessons",
+    imageAlt: "Анатомический препарат сердца, парящий над подставкой, рядом с логотипом BodyQuest",
   },
-  brand: { tagline: "Учить анатомию как художник", home: "Главная страница Anatomy Lessons" },
+  brand: { tagline: "Учить анатомию как художник", home: "Главная страница BodyQuest" },
   nav: { explore: "Обзор", systems: "Системы", lessons: "Уроки", library: "Библиотека", notes: "Заметки" },
   search: { placeholder: "Поиск органов и тем…" },
   profile: { open: "Открыть профиль учащегося" },

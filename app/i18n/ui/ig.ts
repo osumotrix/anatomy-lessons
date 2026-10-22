@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Lessons — Mụta gbasara ahụ mmadụ dịka onye nka",
+    title: "BodyQuest — Mụta gbasara ahụ mmadụ dịka onye nka",
     description:
       "Nyochaa akụkụ ahụ mmadụ n'ụdị 3D nwere nkọwa ahụike — obi, ụbụrụ, akpa ume, imeju, akụrụ, anya, eriri afọ, pancreas na akpụkpọ ahụ.",
-    ogTitle: "Anatomy Lessons — Mụta gbasara ahụ mmadụ dịka onye nka",
+    ogTitle: "BodyQuest — Mụta gbasara ahụ mmadụ dịka onye nka",
     ogDescription: "Mụta gbasara ahụ mmadụ site na ihe nlereanya 3D zuru ezu ma na-adọrọ mmasị.",
-    imageAlt: "Ihe nlereanya obi mmadụ na-ese n'elu ikpo okwu, n'akụkụ akara Anatomy Lessons",
+    imageAlt: "Ihe nlereanya obi mmadụ na-ese n'elu ikpo okwu, n'akụkụ akara BodyQuest",
   },
-  brand: { tagline: "Mụta gbasara ahụ mmadụ dịka onye nka", home: "Ụlọ Anatomy Lessons" },
+  brand: { tagline: "Mụta gbasara ahụ mmadụ dịka onye nka", home: "Ụlọ BodyQuest" },
   nav: { explore: "Nyochaa", systems: "Usoro ahụ", lessons: "Ihe ọmụmụ", library: "Ọba akwụkwọ", notes: "Ihe edeturu" },
   search: { placeholder: "Chọọ akụkụ ahụ ma ọ bụ isiokwu…" },
   profile: { open: "Mepee profaịlụ onye mmụta" },

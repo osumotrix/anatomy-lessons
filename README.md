@@ -1,4 +1,4 @@
-# Anatomy Lessons
+# BodyQuest
 
 An interactive, multilingual 3D human anatomy explorer built with React,
 Three.js, Next.js, and vinext.

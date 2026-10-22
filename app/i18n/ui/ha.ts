@@ -2,14 +2,14 @@ import type { UiDictionary } from "../types";
 
 export const ui: UiDictionary = {
   meta: {
-    title: "Anatomy Lessons — Koyi tsarin jikin ɗan Adam kamar mai fasaha",
+    title: "BodyQuest — Koyi tsarin jikin ɗan Adam kamar mai fasaha",
     description:
       "Binciki gabobin jikin ɗan Adam na 3D masu cikakken bayanin likitanci — zuciya, ƙwaƙwalwa, huhu, hanta, ƙoda, ido, hanji, pancreas da fata.",
-    ogTitle: "Anatomy Lessons — Koyi tsarin jikin ɗan Adam kamar mai fasaha",
+    ogTitle: "BodyQuest — Koyi tsarin jikin ɗan Adam kamar mai fasaha",
     ogDescription: "Koyi tsarin jikin ɗan Adam ta hanyar samfuran 3D masu kayatarwa da cikakken bayanin likitanci.",
-    imageAlt: "Samfurin zuciyar ɗan Adam yana shawagi a kan dandali kusa da tambarin Anatomy Lessons",
+    imageAlt: "Samfurin zuciyar ɗan Adam yana shawagi a kan dandali kusa da tambarin BodyQuest",
   },
-  brand: { tagline: "Koyi tsarin jikin ɗan Adam kamar mai fasaha", home: "Shafin farko na Anatomy Lessons" },
+  brand: { tagline: "Koyi tsarin jikin ɗan Adam kamar mai fasaha", home: "Shafin farko na BodyQuest" },
   nav: { explore: "Bincika", systems: "Tsarukan jiki", lessons: "Darussa", library: "Ɗakin karatu", notes: "Bayanan kula" },
   search: { placeholder: "Nemi gaba ko batu…" },
   profile: { open: "Buɗe bayanan ɗalibi" },
